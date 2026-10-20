@@ -1,0 +1,12 @@
+services:
+  spring-postgres:
+    image: postgres:18
+    container_name: spring-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: brian_7899
+      POSTGRES_DB: inventory
+    volumes:
+      - ~/Development/Learning_Java/spring-boot-start/inventory/inventory-data:/var/lib/postgresql
