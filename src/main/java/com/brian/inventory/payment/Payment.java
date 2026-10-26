@@ -1,10 +1,6 @@
-package com.zee.springmodulithcourse.payment;
+package com.brian.inventory.payment;
 
-import com.zee.springmodulithcourse.payment.type.PaymentStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,8 +9,8 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 /**
- * @author : Ezekiel Eromosei
- * @code @created : 30 May, 2024
+ * @author : Brian Cheruiyot
+ * @code @created : 05 May, 2026
  */
 
 @Getter
@@ -29,5 +25,4 @@ public class Payment {
     private String orderId;
     private long amount;
     private Timestamp paymentDate = Timestamp.from(Instant.now());
-    private PaymentStatus status = PaymentStatus.INCOMPLETE;
 }

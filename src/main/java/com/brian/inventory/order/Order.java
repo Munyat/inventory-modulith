@@ -1,6 +1,6 @@
-package com.zee.springmodulithcourse.order;
+package com.brian.inventory.order;
 
-import com.zee.springmodulithcourse.order.type.Status;
+import com.brian.inventory.inventory.Inventory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,10 +8,11 @@ import lombok.ToString;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.Collection;
 
 /**
- * @author : Ezekiel Eromosei
- * @code @created : 30 May, 2024
+ * @author : Brian Cheruiyot
+ * @code @created : 05 May, 2026
  */
 
 @Getter
@@ -24,9 +25,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderIdentifier;
+    private String orderId;
     private String customerName;
+
     private String customerEmail;
+
     private Timestamp orderDate = Timestamp.from(Instant.now());
-    private Status status = Status.OPEN;
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+    @JoinColumn(name = "orders")
+    @ToString.Exclude
+    private Collection<Inventory> inventories;
 }
